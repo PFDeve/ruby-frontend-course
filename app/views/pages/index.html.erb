@@ -1,0 +1,8 @@
+<div data-controller="main-search">
+  <%= render partial: "pages/main_search" %>
+  <div data-target="main-search.results">
+    <% @posts.each do |post| %>
+      <%= render partial: "posts/row", locals: { post: post } %>
+    <% end %>
+  </div>
+</div>
