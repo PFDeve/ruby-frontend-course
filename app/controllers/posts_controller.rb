@@ -6,4 +6,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+
+  def search
+    @posts = Post.where("name LIKE ?", "%#{params[:search]}%")
+  end
 end

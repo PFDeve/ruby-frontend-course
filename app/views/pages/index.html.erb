@@ -1,8 +1,17 @@
-<div data-controller="main-search">
-  <%= render partial: "pages/main_search" %>
-  <div data-target="main-search.results">
-    <% @posts.each do |post| %>
-      <%= render partial: "posts/row", locals: { post: post } %>
-    <% end %>
+<div class="container">
+  <div class="row justify-content-center" data-controller="search">
+    <div class="col-xs-12 col-sm-6">
+      <h1 class="text-center">Posts</h1>
+      <%= form_with(url: "/", method: :get, data: {action: "submit->search#submit"}) do |f| %>
+        <%= label_tag(:query, "Search for") %>
+        <%= text_field_tag :query, params[:query], data: {target: "search.query"} %>
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+      <% end %>
+      <div id="posts" data-target="search.posts">
+        <% @posts.each do |post| %>
+          <%= render partial: "posts/row", locals: { post: post } %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
