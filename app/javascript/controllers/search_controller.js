@@ -18,18 +18,6 @@ export default class extends Controller {
         this.element.outerHTML = xhr.response
       }
     })
-  //   fetch(`/?query=${value}`, {
-  //     headers: { accept: 'application/json'}
-  //   }).then((response) => response.json())
-  //   .then(data => { 
-  //    var postHTML, postArray ="";
-  //    var postArray = Object.values(data)[0];
-
-  //    postArray.forEach(cocktail => {
-  //     postHTML += this.postTemplate(cocktail)
-  //   });
-  //    this.postsTarget.innerHTML = postHTML;
-  //  });  
   }
 
   postTemplate(post) {
