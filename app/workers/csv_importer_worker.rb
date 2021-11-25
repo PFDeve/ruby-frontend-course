@@ -9,10 +9,13 @@ class CsvImporterWorker
     downloaded_csv = URI.open(csv_url)
     csv = CSV.parse(downloaded_csv, :headers=>true)
 
-    ActiveRecord::Base.transaction do
+    #ActiveRecord::Base.transaction do
       csv.each do |row|
-        Note.create(name: row['new_cases']) if row['new_cases']
+        if row['new_cases']
+          note = Note.create(name: row['new_cases'])
+          p note
+        end
       end
-    end
+    #end
   end
 end

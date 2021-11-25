@@ -1,9 +1,12 @@
 class PagesController < ApplicationController
-  def import_date
+  def import
+    @notes = Note.all
   end
 
-  def import
+  def import_date
     CsvImporterWorker.perform_async(Note::CSV_PATH)
+
+    redirect_to import_path
   end
 
   def index
